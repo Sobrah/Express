@@ -1,0 +1,13 @@
+services:
+  express:
+    image: ${$DOCKERHUB_USERNAME}
+    ports:
+      - 8080:8080
+  
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    environment:
+      WATCHTOWER_POLL_INTERVAL: 60
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
